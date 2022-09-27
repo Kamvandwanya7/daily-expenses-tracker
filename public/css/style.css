@@ -1,0 +1,68 @@
+body{
+
+    background: url(/css/img.jpg);
+    /* background-color: palegoldenrod;
+    display: center;
+    align-items: center; */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    backdrop-filter: none;
+    height: 100vh;
+    width: 100vw;
+}
+
+.loginbox {
+    width: 310px;
+    height: 270px;
+    /* background: transparent */
+    background: rgb(184, 166, 159);
+    color: black;
+    top: 40%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 40px 30px;
+    border-radius: 20px;
+}
+
+.loginBtn {
+
+    background-color: #ad8d239a;
+    border-radius: 100px;
+    color: rgb(0, 55, 128);
+    cursor: pointer;
+    display: inline-block;
+    font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.daily{
+    width: 500px;
+    height: 350px;
+    /* background: transparent */
+    background: rgb(184, 166, 159);
+    color: black;
+    top: 40%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 40px 30px;
+    border-radius: 20px;
+}
