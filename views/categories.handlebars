@@ -9,24 +9,40 @@
 <body>
     <div class="daily">
 
-<form action="/expenses" method="post">
-
-<h2>Expenses Categories</h2>
+<form action="/expenses/:{{name}}" method="post">
 
 
-<label for="">Travel</label>
-<input type="number" value="" placeholder=""><input type="date" value="" placeholder=""><br><br>
+<h2>Track Your Expenses </h2>
+<h5><i>Please select a category and enter an amount you spent this week below</i></h5>
+<div class="success">
+                {{messages.success}}
+            </div>
+
+<select name="catagory">
+  <option name='catagory' value="food">food</option>
+  <option name='catagory' value="toiletries">toiletries</option>
+  <option name='catagory' value="travel">travel</option>
+  <option name='catagory' value="communication">communication</option>
+</select>
+<input type="number" value="" name="amount" step=".01" placeholder="e.g 50.00">
+<input type="date" name="expense_date" value="" placeholder=""><br><br>
+
+{{!-- <label for="">Travel</label>
+<input type="number" value="" name="travel" step=".01" placeholder="e.g 60.00">
 
 <label for="">Food</label>
-<input type="number" value="" placeholder=""><input type="date" value="" placeholder=""><br><br>
+<input type="number" value="" name="food" step=".01" placeholder="e.g 50.00"><input type="date" name="date" value="" placeholder=""><br><br>
 
 <label>Toiletries</label>
-<input type="number" value="" placeholder=""><input type="date" value="" placeholder=""><br><br>
+<input type="number" value="" name="toiletries" step=".01" placeholder="e.g 200.00"><input type="date" name="date" value="" placeholder=""><br><br>
 
 <label>Communication</label>
-<input type="number" value="" placeholder=""><input type="date" value="" placeholder=""><br><br>
-<a href=""><button>Calculate</a></button>
+<input type="number" value="" name="communication" step=".01" placeholder="e.g 350.00"><input type="date" name="date" value="" placeholder=""><br><br> --}}
+<a href="total"><button class="btn">Submit Expence</button></a>
 </form>
+
+
+
     </div>
 
 </body>

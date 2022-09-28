@@ -14,20 +14,24 @@
 
     <div class='loginbox'>
     <H2>Daily Expenses Tracker</H2>
+   <h5><i>Please enter your full name below to track your daily expenses</i></h5>
+
+     <div class="success">
+                {{messages.success}}
+            </div>
         <form action="/add" method="post">
 
             <label>First Name</label>
-            <input type="text" value="" placeholder="Enter first name"><br><br>
+            <input type="text" name="fname" value="" placeholder="Enter first name"><br><br>
 
             <label for="">Last Name</label>
-            <input type="text" value="" placeholder="Enter last name"><br><br>
+            <input type="text" name="sname" value="" placeholder="Enter last name"><br><br>
 
             <label for="">Email</label>
-            <input type="text" value="" placeholder="Enter emailaddress"><br><br>
+            <input type="text" name="email" value="" placeholder="Enter emailaddress"><br><br>
 
-            <a href="/expenses"><button class="loginBtn">Login</a></button>
+            <a href="/expenses"><button class="loginBtn">Login</button></a>
         </form>
-
     </div>
 
 </body>
