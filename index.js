@@ -73,7 +73,7 @@ app.get('/expenses', async function(req, res){
     const expense_date= req.body.expense_date
     const name = req.params.name
     // await dailyExpenses.setExpense(expens, amount, expense_date)
-    await dailyExpenses.getExpense(amount, expense_date, category_des)
+    // await dailyExpenses.getExpense(amount, expense_date, category_des)
     req.flash("sucess", "Thank you for submission");
     res.redirect('total')
 })
