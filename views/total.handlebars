@@ -5,14 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
-    <title>Document</title>
+    <title>Expenses</title>
 </head>
 <body>
 
+ <h1>These are all your expenses ordered by date!</h1>
 
     <div>
-    {{#each }}
-     <div class="">{{}}</div>
+    {{#each expenseCatagory}}
+     <div class="expenseCatagory">{{this.catagory}}</div>
     {{/each}}
     </div>
 

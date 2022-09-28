@@ -54,30 +54,32 @@ app.post('/add', async function(req, res){
 })
 
 
+
+app.get('/expenses', async function(req, res){
+    
+    const catagory= req.body.catagory
+    const amount= req.body.amount
+    const expense_date= req.body.expense_date
+    // const name = req.params.name
+    // await dailyExpenses.setExpense(expens, amount, expense_date)
+    let result= await dailyExpenses.getExpense(catagory, amount, expense_date)
+    req.flash("sucess", "Thank you for submission");
+    res.render('categories')
+})
+
 app.post('/expenses/:name', async function(req, res){
     const expens= req.body.catagory
     const amount= req.body.amount
     const expense_date= req.body.expense_date
     const name = req.params.name
-    await dailyExpenses.setExpense(expens, amount, expense_date)
+    let result= await dailyExpenses.setExpense(expens, amount, expense_date)
     
     
     console.log( expense_date + "dsdsdsdsd")
-    res.render('categories',{name})
+    res.render('total',{
+            expenseCatagory: result
+    })
 })
-
-app.get('/expenses', async function(req, res){
-
-    const category_des= req.body.catagory
-    const amount= req.body.amount
-    const expense_date= req.body.expense_date
-    const name = req.params.name
-    // await dailyExpenses.setExpense(expens, amount, expense_date)
-    // await dailyExpenses.getExpense(amount, expense_date, category_des)
-    req.flash("sucess", "Thank you for submission");
-    res.render('categories')
-})
-
 
 let PORT = process.env.PORT || 3500
 app.listen(PORT, function(){
