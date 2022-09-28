@@ -75,7 +75,7 @@ app.get('/expenses', async function(req, res){
     // await dailyExpenses.setExpense(expens, amount, expense_date)
     // await dailyExpenses.getExpense(amount, expense_date, category_des)
     req.flash("sucess", "Thank you for submission");
-    res.redirect('total')
+    res.render('categories')
 })
 
 
