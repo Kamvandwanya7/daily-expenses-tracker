@@ -8,22 +8,38 @@
     <title>Expenses</title>
 </head>
 <body>
-<div class="nav-container">
+{{!-- <div class="nav-container">
         <ul class="nav-items">
             <!-- Navigation -->
             <a href="/"><li class="nav-item">Home</a></li>
            <a href="/expenses"><li class="nav-item">Track Expenses</a></li>
             
         </ul>
-    </div>
+    </div> --}}
 
  <h1>These are all your expenses ordered by date!</h1>
+<div class='loginboxx'>
 
-    <div>
+    <table class="useExpense">
     {{#each expenseCatagory}}
-     <div class="expenseCatagory">{{this.catagory}}</div>
+     <tr>
+        <td>
+            {{this.category_des}}
+            <hr>
+        </td>
+        <td>
+            R{{this.amount}}
+            <hr>
+        </td>
+        <td>
+            {{this.expense_date}}
+            <hr>
+        </td>
+     </tr>
     {{/each}}
-    </div>
+    </table>
+
+</div>
 
     
 </body>

@@ -23,11 +23,14 @@ create table expenses(
       users_id integer,
       category_des text,
       amount integer not null,
-      expense_date date,
-
-
+      expense_date date
+);
     FOREIGN KEY (users_id) references usernames(id),
     FOREIGN KEY (category_id) references categories(id)
 );
 
 
+SELECT usernames.id, categories.id, expenses.id
+FROM usernames, categories
+INNER JOIN expenses
+ON expenses.id=categories.id;

@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <div class="nav-container">
+    {{!-- <div class="nav-container">
         <ul class="nav-items">
            
             <a href="/"><li class="nav-item">Home</a></li>
@@ -16,11 +16,11 @@
             
 
         </ul>
-    </div>
+    </div> --}}
 
     <div class="daily">
 
-<form action="/expenses/:{{name}}" method="post">
+<form action="/expenses/{{name}}" method="post">
 
 
 <h2>Track Your Expenses </h2>
@@ -49,10 +49,11 @@
 
 <label>Communication</label>
 <input type="number" value="" name="communication" step=".01" placeholder="e.g 350.00"><input type="date" name="date" value="" placeholder=""><br><br> --}}
-<a href="total"><button class="btn">Submit Expence</button></a>
+<a href=""><button type="submit" class="btn">Submit Expence</button></a>
 </form>
 
 
+<a href="/total"><button class="btn">Track Expences</button></a>
 
     </div>
 

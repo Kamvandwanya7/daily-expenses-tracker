@@ -23,8 +23,14 @@ module.exports = function DailyExpense(db) {
   }
   async function getExpense() {
     let result = await db.manyOrNone('SELECT id, category_des, amount, expense_date FROM expenses ORDER BY expense_date')
-    console.log(result + "000000000000000")
+    // console.log(result)
     return result
+  }
+
+  async function showAll(){
+    let result= await db.manyOrNone('SELECT * FROM expenses')
+    console.log(result)
+    return result;
   }
 
 
@@ -35,6 +41,6 @@ module.exports = function DailyExpense(db) {
     setExpense,
     usersExpense,
     getExpense,
-
+    showAll
   }
 }
