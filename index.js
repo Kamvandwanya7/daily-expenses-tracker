@@ -68,14 +68,14 @@ app.get('/expenses', async function(req, res){
 })
 
 app.post('/expenses/:name', async function(req, res){
-    const expens= req.body.catagory
-    const amount= req.body.amount
-    const expense_date= req.body.expense_date
-    const name = req.params.name
-    let result= await dailyExpenses.setExpense(expens, amount, expense_date)
+    // const expens= req.body.catagory
+    // const amount= req.body.amount
+    // const expense_date= req.body.expense_date
+    // const name = req.params.name
+    let result= await dailyExpenses.getExpense()
     
     
-    console.log( expense_date + "dsdsdsdsd")
+    // console.log( expense_date + "dsdsdsdsd")
     res.render('total',{
             expenseCatagory: result
     })
