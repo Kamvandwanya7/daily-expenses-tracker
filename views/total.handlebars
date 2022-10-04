@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,40 +8,48 @@
     <link rel="stylesheet" href="/css/style.css">
     <title>Expenses</title>
 </head>
+
 <body>
-{{!-- <div class="nav-container">
+    {{!-- <div class="nav-container">
         <ul class="nav-items">
             <!-- Navigation -->
-            <a href="/"><li class="nav-item">Home</a></li>
-           <a href="/expenses"><li class="nav-item">Track Expenses</a></li>
-            
+            <a href="/">
+                <li class="nav-item">Home
+            </a></li>
+            <a href="/expenses">
+                <li class="nav-item">Track Expenses
+            </a></li>
+
         </ul>
     </div> --}}
 
- <h1>These are all your expenses ordered by date!</h1>
-<div class='loginboxx'>
+    <h1>These are all your expenses ordered by date!</h1>
+    <div class='loginboxx'>
+        <div class="success">
+                {{messages.success}}
+            </div>
+        <table class="useExpense" border="1">
+        
 
-    <table class="useExpense">
-    {{#each expenseCatagory}}
-     <tr>
-        <td>
-            {{this.category_des}}
-            <hr>
-        </td>
-        <td>
-            R{{this.amount}}
-            <hr>
-        </td>
-        <td>
-            {{this.expense_date}}
-            <hr>
-        </td>
-     </tr>
-    {{/each}}
-    </table>
+            <tr>
+                <th>User-Id</th>
+                <th>category_id</th>
+                <th>Amount</th>
+                <th>Date</th>
+            </tr>
+            {{#each expenseCatagory}}
+            <tr>
+            <td>{{value.id}}</td>
+            <td>{{this.category_id}}</td>
+            <td>R{{this.amount}}</td>
+            <td>{{this.expense_date}}</td>
+            </tr>
+            {{/each}}
+        </table>
 
-</div>
+    </div>
 
-    
+
 </body>
+
 </html>

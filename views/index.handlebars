@@ -23,11 +23,12 @@
     <div class='loginbox'>
     <H2>Daily Expenses Tracker</H2>
    <h5><i>Please enter your full name below to track your daily expenses</i></h5>
-
+  
+  
      <div class="success">
                 {{messages.success}}
             </div>
-        <form action="/add" method="post">
+        <form action="/register" method="post">
 
             <label>First Name</label>
             <input type="text" name="fname" value="" placeholder="Enter first name"><br><br>
@@ -38,7 +39,10 @@
             <label for="">Email</label>
             <input type="text" name="email" value="" placeholder="Enter emailaddress"><br><br>
 
-            <a href="/expenses"><button class="loginBtn">Login</button></a>
+            <a href="/login"><button class="loginBtn" type="submit" >Register</button></a>
+            
+            <p><i>Do not have an account?</i></p><a href="/signup"><button class="loginBtn">Login</button></a>
+
         </form>
     </div>
 

@@ -20,7 +20,7 @@ body{
 
 .loginbox {
     width: 310px;
-    height: 325px;
+    height: 390px;
     /* background: transparent */
     background: rgb(184, 166, 159);
     color: black;
@@ -67,8 +67,8 @@ body{
     border-radius: 20px;
 }
 
-.success{
-    color: rgb(129, 163, 33);
+.success_holder{
+    color: rgb(26, 100, 24);
     font-size: 20px;
     font-weight: bold;
 }
@@ -92,12 +92,12 @@ body{
 }
 
 .loginboxx{
-    width: 660px;
-    height: 325px;
+    width: 790px;
+    height: 450px;
     /* background: transparent */
     background: rgb(184, 166, 159);
     color: black;
-    top: 40%;
+    top: 50%;
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);
@@ -109,4 +109,16 @@ body{
 .useExpense{
     border: 1;
     /* border: 1px solid black; */
+}
+
+
+.loginbox a {
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 20px;
+    color: black;
+}
+table{
+
+    border-collapse: collapse;
 }

@@ -2,9 +2,11 @@ let express= require('express');
 let app= express();
 const exphbs=require('express-handlebars');
 const flash= require('express-flash');
-const session=require('express-session');
+const session= require('express-session');
 const bodyParser = require('body-parser');
-const pgp= require('pg-promise')({});
+const ShortUniqueId=require('short-unique-id')
+const uid = new ShortUniqueId({ length: 5 })
+const pgp = require('pg-promise')({});
 // const daily = require('./daily');
 const DailyExpense= require('./daily')
 app.use(express.static('public'));
@@ -23,7 +25,6 @@ app.use(session({
    saveUninitialized: true
 }));
 
-app.use(flash());
 
 const config = {
     connectionString: DATABASE_URL
@@ -34,6 +35,8 @@ if (process.env.NODE_ENV == 'production') {
         rejectUnauthorized: false
     }
 }
+app.use(flash());
+
 const db = pgp(config);
 const dailyExpenses = DailyExpense(db);
 
@@ -43,54 +46,68 @@ app.get('/', function(req, res){
     res.render('index', )
 })
 
-app.post('/add', async function(req, res){
+app.post('/register', async function(req, res){
     const name= req.body.fname;
     const sname= req.body.sname;
     const email= req.body.email;
-    await dailyExpenses.setNames(name, sname, email);
+    const code= uid();
 
-    req.flash('sucess', "Thank you for submission")
-    res.redirect("/expenses/:total")
+    await dailyExpenses.setNames(name, sname, email, uid());
+    req.flash('success', 'User was added, use this code ' + code)
+    res.render("login")
+
+   // req.flash('sucess', 'Registration submission')
 })
 
+app.get('/login', async function (req, res){
 
+    const {username}= req.body
+
+    if (username){
+    const code= uid()
+    req.flash('success', 'User was added, use this code' + code)
+    
+} else{
+    req.flash('error', 'No username provided')
+}
+// res.redirect("/expenses/"+ username)
+res.redirect("/expenses/name")
+
+})
 
 app.get('/expenses/:name', async function(req, res){
-    
-    const catagory= req.body.catagory
+    // const id= req.body.value;
+    const catagory_id= req.body.value;
     const amount= req.body.amount
     const expense_date= req.body.expense_date
     // const name = req.params.name
     // await dailyExpenses.setExpense(expens, amount, expense_date)
-    let result= await dailyExpenses.getExpense(catagory, amount, expense_date)
-    req.flash("sucess", "Thank you for submission");
+    let result= await dailyExpenses.getExpense( catagory_id, amount, expense_date)
     res.render('categories', {
+        categories: await dailyExpenses.getCategories(),
         name: req.params.name
     })
+  //  req.flash("sucess", "Expense submitted");
 })
 
 app.post('/expenses/:name', async function(req, res){
-    const expens= req.body.catagory
+    const catagory_id= req.body.catagory;
+    // const expens= req.body.value
     const amount= req.body.amount
     const expense_date= req.body.expense_date
     const name = req.params.name
-    let result= await dailyExpenses.setExpense(expens, amount, expense_date)
-    
-    
-    // console.log( expense_date + "dsdsdsdsd")
+    let result= await dailyExpenses.setExpense(catagory_id, amount, expense_date)
+    console.log('Expense submitted')
+    req.flash('success', 'Expense submitted!');
+
     res.redirect('back')
-    // ,{expenseCatagory: result})
 })
 
+
+
 app.get('/total', async function(req, res){
-    // const expens= req.body.catagory
-    // const amount= req.body.amount
-    // const expense_date= req.body.expense_date
-    // const name = req.params.name
     let result= await dailyExpenses.showAll()
     
-    
-    // console.log( expense_date + "dsdsdsdsd")
     res.render('total',{
             expenseCatagory: result
     })

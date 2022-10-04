@@ -1,7 +1,7 @@
 module.exports = function DailyExpense(db) {
 
-  async function setNames(name, sname, email) {
-    await db.none('INSERT INTO usernames(first_name, last_name, email) values($1, $2, $3)', [name, sname, email])
+  async function setNames(name, sname, email, code) {
+    await db.none('INSERT INTO usernames(first_name, last_name, email, user_code) values($1, $2, $3, $4)', [name, sname, email, code])
   }
 
 
@@ -12,8 +12,8 @@ module.exports = function DailyExpense(db) {
   }
 
 
-  async function setExpense(expense, amount, date) {
-    await db.none('INSERT INTO expenses(category_des, amount, expense_date) values($1, $2, $3)', [expense, amount, date])
+  async function setExpense(category_id, amount, date) {
+    await db.none('INSERT INTO expenses(category_id, amount, expense_date) values($1, $2, $3)', [category_id, amount, date])
   }
 
  
@@ -22,7 +22,7 @@ module.exports = function DailyExpense(db) {
 
   }
   async function getExpense() {
-    let result = await db.manyOrNone('SELECT id, category_des, amount, expense_date FROM expenses ORDER BY expense_date')
+    let result = await db.manyOrNone('SELECT category_id, amount, expense_date FROM expenses ORDER BY expense_date')
     // console.log(result)
     return result
   }
@@ -33,6 +33,15 @@ module.exports = function DailyExpense(db) {
     return result;
   }
 
+  async function getCategories(){
+    let result = await db.manyOrNone('SELECT * FROM categories')
+    return result;
+  }
+
+  async function getTotal(){
+  let result = await db.manyOrNone ('SELECT SUM(amount) as Total Vlaue FROM expenses WHERE category_id=1');
+  return result;
+  }
 
   return {
     setNames,
@@ -41,6 +50,8 @@ module.exports = function DailyExpense(db) {
     setExpense,
     usersExpense,
     getExpense,
-    showAll
+    showAll,
+    getCategories,
+    getTotal
   }
 }

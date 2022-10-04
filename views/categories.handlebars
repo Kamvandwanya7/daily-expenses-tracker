@@ -1,61 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
 
     {{!-- <div class="nav-container">
         <ul class="nav-items">
-           
-            <a href="/"><li class="nav-item">Home</a></li>
-           <a href="/expenses"><li class="nav-item">Track Expenses</a></li>
-            
+
+            <a href="/">
+                <li class="nav-item">Home
+            </a></li>
+            <a href="/expenses">
+                <li class="nav-item">Track Expenses
+            </a></li>
+
 
         </ul>
     </div> --}}
 
     <div class="daily">
-
-<form action="/expenses/{{name}}" method="post">
-
-
-<h2>Track Your Expenses </h2>
-<h5><i>Please select a category and enter an amount you spent this week below</i></h5>
-<div class="success">
+        <form action="/expenses/{{name}}" method="post">
+            {{!-- console.log('kamva') --}}
+  <div class="success_holder">
                 {{messages.success}}
             </div>
+          
 
-<select name="catagory">
-  <option name='catagory' value="food">food</option>
-  <option name='catagory' value="toiletries">toiletries</option>
-  <option name='catagory' value="travel">travel</option>
-  <option name='catagory' value="communication">communication</option>
-</select>
-<input type="number" value="" name="amount" step=".01" placeholder="e.g 50.00">
-<input type="date" name="expense_date" value="" placeholder=""><br><br>
+            <h2>Track Your Expenses </h2>
+            <h5><i>Please select a category and enter an amount you spent this week below</i></h5>
 
-{{!-- <label for="">Travel</label>
-<input type="number" value="" name="travel" step=".01" placeholder="e.g 60.00">
+            <select name="catagory">
+                {{#each categories}}
+                <option name='catagory' value="{{id}}">{{cat_description}}</option>
+                {{/each}}
+            </select>
+            <input type="number" value="" name="amount" step=".01" placeholder="e.g 50.00">
+            <input type="date" name="expense_date" value="" placeholder=""><br><br>
 
-
-<input type="number" value="" name="food" step=".01" placeholder="e.g 50.00"><input type="date" name="date" value="" placeholder=""><br><br>
-
-<label>Toiletries</label>
-<input type="number" value="" name="toiletries" step=".01" placeholder="e.g 200.00"><input type="date" name="date" value="" placeholder=""><br><br>
-
-<label>Communication</label>
-<input type="number" value="" name="communication" step=".01" placeholder="e.g 350.00"><input type="date" name="date" value="" placeholder=""><br><br> --}}
-<a href=""><button type="submit" class="btn">Submit Expence</button></a>
-</form>
+            {{!-- <label for="">Travel</label>
+            <input type="number" value="" name="travel" step=".01" placeholder="e.g 60.00">
 
 
-<a href="/total"><button class="btn">Track Expences</button></a>
+            <input type="number" value="" name="food" step=".01" placeholder="e.g 50.00"><input type="date" name="date"
+                value="" placeholder=""><br><br>
+
+            <label>Toiletries</label>
+            <input type="number" value="" name="toiletries" step=".01" placeholder="e.g 200.00"><input type="date"
+                name="date" value="" placeholder=""><br><br>
+
+            <label>Communication</label>
+            <input type="number" value="" name="communication" step=".01" placeholder="e.g 350.00"><input type="date"
+                name="date" value="" placeholder=""><br><br> --}}
+            <a href=""><button type="submit" class="btn">Submit Expence</button></a>
+        </form>
+
+
+        <a href="/total"><button class="btn">Track Expences</button></a>
 
     </div>
 
 </body>
+
 </html>
