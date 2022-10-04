@@ -107,10 +107,15 @@ app.post('/expenses/:name', async function(req, res){
 
 app.get('/total', async function(req, res){
     let result= await dailyExpenses.showAll()
+    let totalExpense= await dailyExpenses.getTotal()
+    console.log(totalExpense)
+    let totals= `Your Total Expenses adds up to R${totalExpense}`
     
     res.render('total',{
-            expenseCatagory: result
+            expenseCatagory: result,
+            totalSpending: totals
     })
+    
 })
 
 let PORT = process.env.PORT || 3500

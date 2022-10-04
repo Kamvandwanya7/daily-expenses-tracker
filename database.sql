@@ -25,7 +25,7 @@ create table expenses(
       category_id integer,
       amount integer not null,
       expense_date date
-      
+
     FOREIGN KEY (users_id) references usernames(id),
     FOREIGN KEY (category_id) references categories(id)
 );
@@ -40,6 +40,6 @@ ON expenses.id=categories.id;
 
 
 
-SELECT SUM(amount) as total_value FROM expenses WHERE category_id=1;
+SELECT SUM(amount) as total_value FROM expenses;
 
 SELECT * FROM expenses JOIN usernames ON expenses.id = usernames.id

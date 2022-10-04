@@ -27,6 +27,7 @@ module.exports = function DailyExpense(db) {
     return result
   }
 
+
   async function showAll(){
     let result= await db.manyOrNone('SELECT * FROM expenses')
     console.log(result)
@@ -39,8 +40,8 @@ module.exports = function DailyExpense(db) {
   }
 
   async function getTotal(){
-  let result = await db.manyOrNone ('SELECT SUM(amount) as Total Vlaue FROM expenses WHERE category_id=1');
-  return result;
+  let result = await db.oneOrNone ('SELECT SUM(amount) as total_value FROM expenses');
+  return result.total_value;
   }
 
   return {
