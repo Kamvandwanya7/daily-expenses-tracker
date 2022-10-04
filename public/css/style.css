@@ -91,6 +91,24 @@ body{
     touch-action: manipulation;
 }
 
+.btn1{
+    background-color: #211c509a;
+    border-radius: 100px;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;   
+}
+
 .loginboxx{
     width: 790px;
     height: 450px;
