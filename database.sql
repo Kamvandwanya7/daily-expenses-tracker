@@ -25,7 +25,7 @@ create table expenses(
       category_id integer,
       amount integer not null,
       expense_date date
-
+      
     FOREIGN KEY (users_id) references usernames(id),
     FOREIGN KEY (category_id) references categories(id)
 );
