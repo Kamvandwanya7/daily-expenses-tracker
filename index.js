@@ -76,7 +76,6 @@ res.redirect("/expenses/name")
 })
 
 app.get('/expenses/:name', async function(req, res){
-    // const id= req.body.value;
     const catagory_id= req.body.value;
     const amount= req.body.amount
     const expense_date= req.body.expense_date
@@ -87,7 +86,6 @@ app.get('/expenses/:name', async function(req, res){
         categories: await dailyExpenses.getCategories(),
         name: req.params.name
     })
-  //  req.flash("sucess", "Expense submitted");
 })
 
 app.post('/expenses/:name', async function(req, res){
