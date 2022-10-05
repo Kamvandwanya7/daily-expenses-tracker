@@ -79,7 +79,7 @@ app.get('/expenses/:name', async function(req, res){
     const catagory_id= req.body.value;
     const amount= req.body.amount
     const expense_date= req.body.expense_date
-    // const name = req.params.name
+    const name = req.params.name
     // await dailyExpenses.setExpense(expens, amount, expense_date)
     let result= await dailyExpenses.getExpense( catagory_id, amount, expense_date)
     res.render('categories', {
@@ -95,7 +95,7 @@ app.post('/expenses/:name', async function(req, res){
     const expense_date= req.body.expense_date
     const name = req.params.name
     let result= await dailyExpenses.setExpense(catagory_id, amount, expense_date)
-    console.log('Expense submitted')
+    // console.log('Expense submitted')
     req.flash('success', 'Expense submitted!');
 
     res.redirect('back')
@@ -106,8 +106,10 @@ app.post('/expenses/:name', async function(req, res){
 app.get('/total', async function(req, res){
     let result= await dailyExpenses.showAll()
     let totalExpense= await dailyExpenses.getTotal()
-    console.log(totalExpense)
-    let totals= `Your Total Expenses adds up to R${totalExpense}`
+    const name = req.params.name
+    // console.log(totalExpense)${name}
+
+    let totals= ` Your Total Expenses adds up to R${totalExpense}`
     
     res.render('total',{
             expenseCatagory: result,

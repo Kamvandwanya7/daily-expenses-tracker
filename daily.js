@@ -7,7 +7,7 @@ module.exports = function DailyExpense(db) {
 
   async function getNames() {
     let result = await db.oneOrNone('SELECT first_name FROM usernames WHERE first_name = $1')
-    console.log(result)
+    // console.log(result)
     return result;
   }
 
