@@ -118,6 +118,13 @@ app.get('/total', async function(req, res){
     
 })
 
+
+app.get('/delete', async function(req, res){
+    await dailyExpenses.deleteExpenses()
+    req.flash('success', "You have now cleared all your expenses!")
+    res.redirect('/total')
+})
+
 let PORT = process.env.PORT || 3500
 app.listen(PORT, function(){
     console.log('App starting on port', PORT);

@@ -43,6 +43,10 @@ module.exports = function DailyExpense(db) {
   let result = await db.oneOrNone ('SELECT SUM(amount) as total_value FROM expenses');
   return result.total_value;
   }
+  
+  async function deleteExpenses (req, res) {
+    return await db.none('DELETE FROM expenses')
+  }
 
   return {
     setNames,
@@ -53,6 +57,7 @@ module.exports = function DailyExpense(db) {
     getExpense,
     showAll,
     getCategories,
-    getTotal
+    getTotal,
+    deleteExpenses
   }
 }
